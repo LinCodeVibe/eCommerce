@@ -3,6 +3,8 @@ import ProductCard from '../components/ProductCard';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+//comments
+
 const ProductsScreen = () => {
     const [data, setData] = useState([])
 

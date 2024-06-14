@@ -11,7 +11,7 @@ const ProductCard = ({ product, loading}) => {
         overflow='hidden'
         p='4'
         shadow='md'>
-        <Image />
+        <Image src={product.images[0]} fallbackSrc='https://via.placeholder.com/150' alt={product.name} height='200'/>
         {product.stock < 5 ? (
             <Badge  colorScheme='yellow'> only {product.stock} left</Badge>
         ) : product.stock < 1 ? (

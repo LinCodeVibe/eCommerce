@@ -19,3 +19,38 @@ export const getProducts = (page, favouriteToogle) => async (dispatch) => {
             ));
         }
     };
+
+    export const addToFavorites = (id) => async (dispatch, getState) => {
+        const {
+            product: { favorites},
+        } = getState();
+
+        const newfavorites = [...favorites, id]
+        localStorage.setItem('favorites', JSON.stringfy(newfavorites));
+        dispatch(setFavorites(newfavorites));
+    };
+
+    export const removeFromFavorites = (id) => async (dispatch, getState) => {
+        const {
+            product: { favorites},
+        } = getState();
+
+        const newfavorites = favorites.filter((favoriteId) => favoriteId !== id);
+        localStorage.setItem('favorites', JSON.stringfy(newfavorites));
+        dispatch(setFavorites(newfavorites));
+    };
+
+    export const toggleFavorites = (toggle) => async (dispatch, getState) => {
+        const {
+            product: { favorites, products},
+        } = getState();
+
+        if(toggle) {
+            const filterProducts = products.filter((product) => favorites.includes(product._id));
+            dispatch(setFavoritesToggle(toggle));
+            dispatch(setProducts(filterProducts));
+        } else {
+            dispatch(setFavoritesToggle(false));
+            dispatch(getProducts(1));
+        }
+    };

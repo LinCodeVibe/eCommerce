@@ -28,12 +28,5 @@ npm run app
 Feel free to reach out if you encounter any issues or have questions. Happy coding!
 
 
-run frontend_client
-  --> npm run start
-
-run backend_server
-  --> npm run backend_server
 
 
-run frontend & backend
-  --> npm run app

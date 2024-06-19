@@ -1,8 +1,8 @@
-## Getting Started
+# Getting Started
 
 This project includes both the frontend client and the backend server. Below are the instructions to run each component individually or both together.
 
-###Running the Frontend Client
+##Running the Frontend Client
 To start the frontend client, run the following command:
 
 

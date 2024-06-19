@@ -5,6 +5,10 @@ This project includes both the frontend client and the backend server. Below are
 ### Running the Frontend Client
 To start the frontend client, run the following command:
 
+```bach
+npm run start
+```
+
 
 run frontend_client
   --> npm run start

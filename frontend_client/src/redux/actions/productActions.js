@@ -1,7 +1,7 @@
 import { setProducts, setLoading, setError, setPagination, setFavorites, setFavoritesToggle} from '../slices/product';
 import axios from 'axios';
 
-export const getProducts = (page, favouriteToogle) => async (dispatch) => {
+export const getProducts = (page, favoritesToggle) => async (dispatch) => {
     dispatch(setLoading());
     try {
         const { data } = await axios.get(`/api/products/${page}/${10}`);
@@ -26,7 +26,7 @@ export const getProducts = (page, favouriteToogle) => async (dispatch) => {
         } = getState();
 
         const newfavorites = [...favorites, id]
-        localStorage.setItem('favorites', JSON.stringfy(newfavorites));
+        localStorage.setItem('favorites', JSON.stringify(newfavorites));
         dispatch(setFavorites(newfavorites));
     };
 
@@ -36,7 +36,7 @@ export const getProducts = (page, favouriteToogle) => async (dispatch) => {
         } = getState();
 
         const newfavorites = favorites.filter((favoriteId) => favoriteId !== id);
-        localStorage.setItem('favorites', JSON.stringfy(newfavorites));
+        localStorage.setItem('favorites', JSON.stringify(newfavorites));
         dispatch(setFavorites(newfavorites));
     };
 

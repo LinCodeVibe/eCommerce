@@ -5,8 +5,8 @@ import Product from '../models/Product.js';
 const productRoutes = express.Router();
 
 const getProducts = async (req, res) => {
-    const page = parseInt(req.params.page) // 1, 2, or 3 pages
-    const perPage = parseInt(req.params.perPage) // 10 items on a page
+    const page = parseInt(req.params.page) // 1, 2, or 3 pages that fetch the product
+    const perPage = parseInt(req.params.perPage) // 10 items on a page of all products
 
     const products = await Product.find({});
 
@@ -21,7 +21,21 @@ const getProducts = async (req, res) => {
         }
 };
 
+// To display a single product's information
+const getProduct = async (req, res) => {
+    const product = await Product.findById(req.params.id)
+
+    if (product) {
+        res.json(product);
+    } else {
+        res.status(404);
+        throw new Error('Product not found');
+    }
+};
+
+// public routes
 productRoutes.route('/:page/:perPage').get(getProducts);
 productRoutes.route('/').get(getProducts);
+productRoutes.route('/:id').get(getProduct);
 
 export default productRoutes;

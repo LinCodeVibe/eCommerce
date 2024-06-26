@@ -1,4 +1,4 @@
-import { setProducts, setLoading, setError, setPagination, setFavorites, setFavoritesToggle} from '../slices/product';
+import { setProducts, setLoading, setError, setPagination, setFavorites, setFavoritesToggle, setProduct } from '../slices/product';
 import axios from 'axios';
 
 export const getProducts = (page, favoritesToggle) => async (dispatch) => {
@@ -52,5 +52,22 @@ export const getProducts = (page, favoritesToggle) => async (dispatch) => {
         } else {
             dispatch(setFavoritesToggle(false));
             dispatch(getProducts(1));
+        }
+    };
+
+    // function calling the product
+    export const getProduct = (id) => async (dispatch) => {
+        dispatch(setLoading(true));
+        try {
+            const {data} = await axios.get(`/api/products/${id}`);
+            dispatch(setProduct(data));
+        } catch (error) {
+            dispatch(setError(
+                error.reponse && error.reponse.data.message 
+                ? error.response.data.message 
+                : error.message 
+                ? error.message
+                : 'An expected error has ocurred. Please try again later.'
+            ));
         }
     };

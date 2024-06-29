@@ -11,11 +11,11 @@ function App() {
       <Router>
             <Header />
             <main>
-                  <Routes>
-                     <Route path='/' element={<LandingScreen />} />
-                     <Route path='/products' element={<ProductsScreen />} />                    
+                                   <Routes>
+                                              <Route path='/' element={<LandingScreen />} />
+                                             <Route path='/products' element={<ProductsScreen />} />                    
                      <Route path='/product/:id' element={<ProductScreen />} />
-                  </Routes>
+                                               </Routes>
             </main>
       </Router>
    </ChakraProvider>

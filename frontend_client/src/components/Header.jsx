@@ -1,21 +1,21 @@
 import React from 'react';
 import { IconButton, Box, Flex, HStack, Icon, Stack, Text, useColorModeValue as mode, useDisclosure } from '@chakra-ui/react';
 import { useEffect } from 'react';
-import {BsPhoneFlip} from 'react-icons/bs';
+import { GiWineBottle } from 'react-icons/gi';
 import { Link as ReactLink} from 'react-router-dom';
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import NavLink from './NavLink';
 import ColorModeToggle from './ColorModeToggle';
-import { BiUserCheck } from 'react-icons/bi';
+import { FaUser } from 'react-icons/fa6';
 import { toggleFavorites } from '../redux/actions/productActions';
 import {CloseIcon, HamburgerIcon} from '@chakra-ui/icons';
 
 const Links = [
        {name: 'Products', route: '/products'},
-       {name: 'Hot Deals', route: '/hot-deals'},
+       {name: 'Latest News', route: '/hot-deals'},
        {name: 'Contact', route: '/contact'},
-       {name: 'Services', route: '/services'},
+       {name: 'About Us', route: '/services'},
 ];
 
 const Header = () => {
@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
        
-   <Box bg={mode('cyan.300', 'gray.900')} px='4'>
+   <Box bg={mode('purple.200', 'purple.900')} px='10'>
 
        <Flex h='16' alignItems='center' justifyContent='space-between'>
               <Flex display={{ base: 'flex', md: 'none'}} alignItems='center'>
@@ -40,11 +40,11 @@ const Header = () => {
               </Flex>
               <HStack spacing='8' alignItems='center'>
                      <Box alignItems='center' display='flex' as={ReactLink} to='/'>
-                            <Icon as={BsPhoneFlip} h='6' w='6' color={mode('black', 'yellow.200')} />
+                            <Icon as={GiWineBottle} h='6' w='6' color={mode('black', 'yellow.200')} />
                             <Text as='b'>eCommerce</Text>
                      </Box>
 
-                     <HStack as='nav' spacing='4' display={{ base: 'none', md: 'flex' }}>
+                     <HStack as='nav' spacing='7' display={{ base: 'none', md: 'flex' }}>
                             {Links.map((link) => (
                                 <NavLink route={link.route} key={link.route}>
                                     <Text fontWeight='medium'>{link.name}</Text>      
@@ -67,8 +67,8 @@ const Header = () => {
 
                      </HStack>                  
               </HStack>
-                     <Flex alignItems='center'>
-                            <BiUserCheck  />
+                     <Flex alignItems='center' >
+                            <FaUser />
                      </Flex>           
        </Flex>
        <Box display='flex'>

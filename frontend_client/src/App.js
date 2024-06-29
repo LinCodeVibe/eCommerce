@@ -3,7 +3,7 @@ import ProductsScreen from './screens/ProductsScreen';
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'; 
 import Header from './components/Header';
 import LandingScreen from './screens/LandingScreen';
-import ProductScreen from './screens/ProductsScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
    return (

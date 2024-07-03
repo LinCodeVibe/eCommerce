@@ -1,7 +1,58 @@
-import React from 'react';
+import { Button, Flex, Heading, Stack, Text, useColorModeValue as mode } from '@chakra-ui/react';
+import { IoBagCheckOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
+import { Link as ReactLink } from 'react-router-dom';
 
 const OrderSummary = () => {
-	return <div>OrderSummary</div>;
+	const { subtotal, shipping } = useSelector((state) => state.cart);
+
+	return (
+		<Stack
+			minWidth='300px'
+			spacing='8'
+			borderWidth='1px'
+			borderColor={mode('purple.500', 'cyan.100')}
+			rounded='lg'
+			padding='8'
+			w='full'
+		>
+			<Heading size='md' justify='middle'>
+				Order Summary
+			</Heading>
+			<Stack spacing='6'>
+				<Flex justify='space-between'>
+					<Text fontWeight='medium' color={mode('gray.600', 'gray.400')}>
+						subtotal
+					</Text>
+					<Text fontWeight='medium'>${subtotal}</Text>
+				</Flex>
+
+				<Flex justify='space-between'>
+					<Text fontWeight='medium' color={mode('gray.600', 'gray.400')}>
+						shipping cost
+					</Text>
+					<Text fontWeight='medium'>${shipping}</Text>
+				</Flex>
+
+				<Flex justify='space-between'>
+					<Text fontSize='xl' fontWeight={'extrabold'}>
+						Total
+					</Text>
+					<Text fontWeight='medium'>${Number(subtotal) + Number(shipping)}</Text>
+				</Flex>
+			</Stack>
+			<Button
+				as={ReactLink}
+				to='/checkout'
+				colorScheme='purple'
+				size='lg'
+				rightIcon={<IoBagCheckOutline />}
+				fontSize='medium'
+			>
+				Checkout
+			</Button>
+		</Stack>
+	);
 };
 
 export default OrderSummary;

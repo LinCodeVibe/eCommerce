@@ -17,7 +17,7 @@ export const sendVerificationEmail = (token, email, name) => {
 		service: 'gmail',
 		auth: {
 			user: 'hsiaoclcl@gmail.com',
-			pass: 'ehnd whhg cfpr eejp',
+			pass: '', //paasword
 		},
 	});
 

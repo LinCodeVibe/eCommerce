@@ -13,8 +13,8 @@ export const sendPasswordResetEmail = (token, email, name) => {
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
-			user: 'hsiaoclcl@gmail.com',
-			pass: 'ehnd whhg cfpr eejp',
+			user: 'hsiaoclcl@gmail.com', //Gmail
+			pass: '', //password
 		},
 	});
 
